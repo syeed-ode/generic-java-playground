@@ -1,4 +1,6 @@
-package com.syeedode.security.keys.syeedsimplementation;
+package com.syeedode.security.keys.syeedsimplementation.generation;
+
+import com.syeedode.security.proivders.SyeedsProvider;
 
 import java.security.*;
 import java.util.Arrays;

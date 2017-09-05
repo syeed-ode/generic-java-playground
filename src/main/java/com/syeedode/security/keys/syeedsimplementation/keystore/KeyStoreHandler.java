@@ -1,6 +1,12 @@
-package com.syeedode.security.keys.syeedsimplementation;
+package com.syeedode.security.keys.syeedsimplementation.keystore;
 
-import java.io.*;
+import com.syeedode.annotations.ThreadSafe;
+import com.syeedode.exceptions.ApplicationExceptionService;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -15,6 +21,7 @@ import java.util.Optional;
  * Author: syeedode
  * Date: 9/5/17
  */
+@ThreadSafe
 public class KeyStoreHandler {
     private final KeyStore keyStore;
     private final char[] password;
@@ -22,13 +29,22 @@ public class KeyStoreHandler {
     private static final String HOME_DIRECTORY  = System.getProperty(USER_HOME);
     private static final String KEYSTORE_HOME = HOME_DIRECTORY + File.separator + ".keystore";
 
+    /** * Static factory metnods */
+    public static KeyStore getKeyStore(char [] password) {
+        return new KeyStoreHandler(password).getKeyStore();
+    }
+
+    public static KeyStoreHandler getKeyStoreHandler(char [] password) {
+        return new KeyStoreHandler(password);
+    }
+
+    /** * Constructors */
+
     /**
      * Remember the password can be null. It indicates
      * the keystore can be read but is unverified.
      */
-    public KeyStoreHandler(char [] password) {
-        KeyStore tempKeystore = null;
-        boolean exceptionCaught = false;
+    private KeyStoreHandler(char [] password) {
         if(Objects.nonNull(password)) {
             int userInputPasswordLength = password.length;
             this.password = new char[userInputPasswordLength];
@@ -37,39 +53,18 @@ public class KeyStoreHandler {
             this.password = null;
         }
 
-        String fname = KEYSTORE_HOME;
-        FileInputStream fileInputStream = null;
-        String algorithmType = null;
+        KeyStoreExceptionDto dto = new KeyStoreExceptionDto(KEYSTORE_HOME);
+
+        KeyStore tempKeystore = null;
         try {
-            algorithmType = KeyStore.getDefaultType();
-            tempKeystore = KeyStore.getInstance(algorithmType);
-            fileInputStream = new FileInputStream(fname);
+            dto.setAlgorithm(KeyStore.getDefaultType());
+            tempKeystore = KeyStore.getInstance(dto.getAlgorithm());
+            FileInputStream fileInputStream = new FileInputStream(dto.getFileName());
             tempKeystore.load(fileInputStream, this.password);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-            exceptionCaught = true;
-            System.out.println("Could not identiry correct algorithm: " + algorithmType);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            exceptionCaught = true;
-            System.out.println("Could not read .keystore file from: " + fname);
-        } catch (IOException e) {
-            exceptionCaught = true;
-            e.printStackTrace();
-            System.out.println("Error in reading the data from the .keystore file" + e);
-        } catch (NoSuchAlgorithmException e) {
-            exceptionCaught = true;
-            e.printStackTrace();
-            System.out.println("No message digest is available on class path to read this .keystore" + e);
-        } catch (CertificateException e) {
-            exceptionCaught = true;
-            e.printStackTrace();
-            System.out.println("Generic format errors in the .keystore data" + e);
+        } catch (NoSuchAlgorithmException|CertificateException|IOException|KeyStoreException e) {
+            handleException(e, dto);
         }
         keyStore = tempKeystore;
-        if(exceptionCaught) {
-            System.exit(0);
-        }
     }
 
     public KeyStore getKeyStore() {
@@ -86,5 +81,12 @@ public class KeyStoreHandler {
         FileOutputStream fileOutputStream = new FileOutputStream(KEYSTORE_HOME);
         keyStore.store(fileOutputStream, password);
         fileOutputStream.close();
+    }
+
+    private void handleException(Exception e, KeyStoreExceptionDto exceptionDto) {
+        e.printStackTrace();
+
+        ApplicationExceptionService exHandler = new ApplicationExceptionService();
+        exHandler.manageKeyStoreHandlerException(e, exceptionDto);
     }
 }

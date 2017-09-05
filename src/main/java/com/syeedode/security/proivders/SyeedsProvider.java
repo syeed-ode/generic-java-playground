@@ -1,4 +1,4 @@
-package com.syeedode.security.keys.syeedsimplementation;
+package com.syeedode.security.proivders;
 
 import java.security.Provider;
 
@@ -18,6 +18,6 @@ public class SyeedsProvider extends Provider {
     public SyeedsProvider() {
         super("SyeedOde", 1.0, "Syeed Ode's Security Provider v1.0");
         put("KeyPairGenerator.SYEED_ODE"
-                , "com.syeedode.security.keys.syeedsimplementation.SyeedsKeyPairGenerator");
+                , "com.syeedode.security.keys.syeedsimplementation.generation.SyeedsKeyPairGenerator");
     }
 }
