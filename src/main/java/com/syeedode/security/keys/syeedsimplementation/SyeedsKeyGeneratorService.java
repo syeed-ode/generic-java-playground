@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Author: syeedode
  * Date: 9/3/17
  */
-public class SyeedsKeyService {
+public class SyeedsKeyGeneratorService {
     public static void keyGeneroatorExecutor() {
         Security.addProvider(new SyeedsProvider());
         try {

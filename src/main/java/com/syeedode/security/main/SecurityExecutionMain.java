@@ -1,6 +1,7 @@
 package com.syeedode.security.main;
 
-import static com.syeedode.security.keys.syeedsimplementation.SyeedsKeyService.keyGeneroatorExecutor;
+import static com.syeedode.security.keys.KeyEvaluator.assemtricKeyGenorator;
+import static com.syeedode.security.keys.syeedsimplementation.SyeedsKeyGeneratorService.keyGeneroatorExecutor;
 import static com.syeedode.security.proivders.ProviderListService.printListOfProviders;
 
 /**
@@ -13,7 +14,7 @@ import static com.syeedode.security.proivders.ProviderListService.printListOfPro
 public class SecurityExecutionMain {
     public static void main(String args []) {
         keyGeneroatorExecutor();
-        //assemtricKeyGenorator();
+        assemtricKeyGenorator();
         printListOfProviders();
         //printKeyValue();
     }
