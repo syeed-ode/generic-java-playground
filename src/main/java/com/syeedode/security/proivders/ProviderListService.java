@@ -16,7 +16,9 @@ public class ProviderListService {
     public static void printListOfProviders() {
         try {
             Provider[] providerArray = Security.getProviders();
-            System.out.println("List of " + providerArray.length + " providers: \r\n" + Arrays.toString(providerArray));
+            System.out.println("List of " + providerArray.length + " providers: \r\n"
+                    + newLineEntries(Arrays.toString(providerArray))
+                    + "\r\n");
             for(Provider p : providerArray) {
                 System.out.println("Provider: " + p);
                 System.out.println("\tService information: ");
@@ -33,6 +35,10 @@ public class ProviderListService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static String newLineEntries(String inputList) {
+        return inputList.replace(",","\r\n");
     }
 
     private static String serviceToStringConverter(Provider.Service service) {
