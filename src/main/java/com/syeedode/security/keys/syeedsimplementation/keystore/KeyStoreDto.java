@@ -19,7 +19,7 @@ public class KeyStoreDto {
     private final char[] pwAsCharArray;
 
     /** * Static factory methods */
-    public static KeyStoreDto valueOf(String... args){
+    public static KeyStoreDto getInstance(String... args){
         return new KeyStoreDto(args);
     }
 

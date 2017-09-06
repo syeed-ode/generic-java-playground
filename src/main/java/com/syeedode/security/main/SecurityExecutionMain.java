@@ -1,6 +1,6 @@
 package com.syeedode.security.main;
 
-import static com.syeedode.security.keys.syeedsimplementation.keystore.KeyStoreService.keyStoreEntry;
+import static com.syeedode.security.ssl.SSLServer.runSSLServer;
 
 /**
  * O'Reilly Java Security Second Edition
@@ -11,7 +11,8 @@ import static com.syeedode.security.keys.syeedsimplementation.keystore.KeyStoreS
  */
 public class SecurityExecutionMain {
     public static void main(String args []) {
-        keyStoreEntry(args);
+//        keyStoreEntry(args);
+        runSSLServer();
 //        keyGeneroatorExecutor();
 //        assemtricKeyGenorator();
 //        printListOfProviders();

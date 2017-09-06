@@ -40,7 +40,7 @@ public class KeyStoreService {
     }
 
     public void keyStorServicer(KeyStore keyStore, String [] args) {
-        KeyStoreDto keyStoreDto = KeyStoreDto.valueOf(args);
+        KeyStoreDto keyStoreDto = KeyStoreDto.getInstance(args);
         String keyAlias = keyStoreDto.getKeyAlias();
 
         System.out.println("************");
