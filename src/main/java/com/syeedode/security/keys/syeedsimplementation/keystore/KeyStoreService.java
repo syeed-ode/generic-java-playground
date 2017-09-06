@@ -27,7 +27,12 @@ public class KeyStoreService {
     public void processAllKeyStoreEntries(KeyStoreService keyStoreService, KeyStore keyStore) {
         try {
             for(Enumeration<String> e = keyStore.aliases(); e.hasMoreElements();){
-                keyStoreService.keyStorServicer(keyStore, new String[]{e.nextElement(),"changeit"});
+                String alias = e.nextElement();
+                if(!alias.equalsIgnoreCase("syeedsgmail")) {
+                    keyStoreService.keyStorServicer(keyStore, new String[]{alias, "changeit"});
+                } else {
+                    System.out.println("Password not compatable with: " + alias + "\r\n\r\n");
+                }
             }
         } catch (KeyStoreException exc) {
             handleException(exc);
@@ -38,21 +43,20 @@ public class KeyStoreService {
         KeyStoreDto keyStoreDto = KeyStoreDto.valueOf(args);
         String keyAlias = keyStoreDto.getKeyAlias();
 
+        System.out.println("************");
         try {
             if(keyStore.isKeyEntry(keyAlias)) {
                 printKeyInfoFromValidKeyEntry(keyStore, keyStoreDto);
                 getCertInfoFromValidKeyEntry(keyStore, keyAlias);
-                System.out.println();
             } else if(keyStore.isCertificateEntry(keyAlias)) {
                 getCertInfoFromValidCertEntry(keyStore, keyAlias);
-                System.out.println();
             } else {
                 System.out.println(keyAlias + " is unknown to this keystore");
             }
         } catch (KeyStoreException|UnrecoverableKeyException|NoSuchAlgorithmException e) {
             handleException(e);
         }
-        System.out.println("************\r\n\r\n************");
+        System.out.println("************\r\n\r\n");
     }
 
     private void printKeyInfoFromValidKeyEntry(KeyStore keyStore, KeyStoreDto dto)
@@ -77,7 +81,7 @@ public class KeyStoreService {
     }
 
     private void getCertInfoFromValidCertEntry(KeyStore keyStore, String keyAlias) throws KeyStoreException {
-        System.out.println(keyAlias + " is a certificate entry in the keystore");
+        System.out.println(keyAlias + " :is a certificate entry in the keystore");
         Certificate cert = keyStore.getCertificate(keyAlias);
         printRootAndKeyCertIfValid(keyAlias, cert, cert);
     }
@@ -86,12 +90,12 @@ public class KeyStoreService {
             , Certificate possibleIssuingRootCert, Certificate possibleKeyCert) {
         if(possibleIssuingRootCert instanceof X509Certificate) {
             X509Certificate x509Cert = (X509Certificate) possibleIssuingRootCert;
-            System.out.println(keyAlias + " is really " + x509Cert.getSubjectDN());
+            System.out.println(keyAlias + " :is really: " + x509Cert.getSubjectDN());
         }
         if(possibleKeyCert instanceof X509Certificate) {
             X509Certificate x509Cert = (X509Certificate) possibleKeyCert;
-            System.out.println(keyAlias + " was verified by " + x509Cert.getIssuerDN()
-                    + ". But it is still: " + x509Cert.getSubjectDN());
+            System.out.println(keyAlias + " was verified by: " + x509Cert.getIssuerDN()
+                    + ". \r\n\tBut it is still: " + x509Cert.getSubjectDN());
         }
     }
 

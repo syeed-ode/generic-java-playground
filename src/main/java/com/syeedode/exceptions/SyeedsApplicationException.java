@@ -12,6 +12,10 @@ public class SyeedsApplicationException extends RuntimeException {
         super();
     }
 
+    public SyeedsApplicationException(String message) {
+        super(message);
+    }
+
     public SyeedsApplicationException(Throwable cause) {
         super(cause);
     }
