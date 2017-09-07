@@ -8,6 +8,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import static com.syeedode.security.common.ArgumentValidator.SERVER_OUTPUT_STRING;
+
 /**
  * O'Reilly Java Security Second Edition
  * SSL Client and Server Sockets - Chapter 14: SSL and HTTPS
@@ -38,7 +40,7 @@ public class SSLServer extends Thread {
 
             String data = br.readLine();
             System.out.println("Client asked: " + data);
-            printWriter.println("What is she?");
+            printWriter.println(SERVER_OUTPUT_STRING);
             printWriter.close();
             socket.close();
         } catch (IOException e) {

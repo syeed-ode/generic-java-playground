@@ -13,7 +13,7 @@ import java.security.*;
  * Author: syeedode
  * Date: 9/3/17
  */
-public class KeyEvaluator {
+public class AssymetricGenericKeyService {
 
     public static void assemtricKeyGenorator() {
         try {

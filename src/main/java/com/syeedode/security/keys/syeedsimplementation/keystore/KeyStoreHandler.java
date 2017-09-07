@@ -53,16 +53,17 @@ public class KeyStoreHandler {
             this.password = null;
         }
 
-        KeyStoreExceptionDto dto = new KeyStoreExceptionDto(KEYSTORE_HOME);
+        KeyStoreExceptionDto exceptionDto = new KeyStoreExceptionDto(KEYSTORE_HOME);
 
         KeyStore tempKeystore = null;
         try {
-            dto.setAlgorithm(KeyStore.getDefaultType());
-            tempKeystore = KeyStore.getInstance(dto.getAlgorithm());
-            FileInputStream fileInputStream = new FileInputStream(dto.getFileName());
+            exceptionDto.setAlgorithm(KeyStore.getDefaultType());
+            /** * Meat and Potatoes */
+            tempKeystore = KeyStore.getInstance(exceptionDto.getAlgorithm());
+            FileInputStream fileInputStream = new FileInputStream(exceptionDto.getFileName());
             tempKeystore.load(fileInputStream, this.password);
         } catch (NoSuchAlgorithmException|CertificateException|IOException|KeyStoreException e) {
-            handleException(e, dto);
+            handleException(e, exceptionDto);
         }
         keyStore = tempKeystore;
     }
