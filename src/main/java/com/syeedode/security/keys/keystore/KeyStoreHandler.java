@@ -1,4 +1,4 @@
-package com.syeedode.security.keys.syeedsimplementation.keystore;
+package com.syeedode.security.keys.keystore;
 
 import com.syeedode.annotations.ThreadSafe;
 import com.syeedode.exceptions.ApplicationExceptionService;

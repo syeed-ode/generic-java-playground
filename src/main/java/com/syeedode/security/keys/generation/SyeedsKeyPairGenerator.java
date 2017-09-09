@@ -1,6 +1,6 @@
-package com.syeedode.security.keys.syeedsimplementation.generation;
+package com.syeedode.security.keys.generation;
 
-import com.syeedode.security.keys.syeedsimplementation.SyeedsKey;
+import com.syeedode.security.keys.SyeedsKey;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;

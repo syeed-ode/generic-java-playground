@@ -1,4 +1,4 @@
-package com.syeedode.security.keys.syeedsimplementation;
+package com.syeedode.security.keys;
 
 import java.security.Key;
 import java.security.PrivateKey;

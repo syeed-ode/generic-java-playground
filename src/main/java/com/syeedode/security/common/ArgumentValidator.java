@@ -12,7 +12,8 @@ import java.util.Optional;
  * Date: 9/6/17
  */
 public class ArgumentValidator {
-    public final static String SERVER_OUTPUT_STRING = "Why are you asking me?";
+    public static final String SERVER_OUTPUT_STRING = "Why are you asking me?";
+    public static final Object[] EMPTY_ARRAY = new Object[]{};
 
     public static String fromStringArray(String[] args, final int index, String defaultString) {
         return Optional

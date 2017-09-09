@@ -1,4 +1,4 @@
-package com.syeedode.security.keys.syeedsimplementation.keystore;
+package com.syeedode.security.keys.keystore;
 
 /**
  * O'Reilly Java Security Second Edition

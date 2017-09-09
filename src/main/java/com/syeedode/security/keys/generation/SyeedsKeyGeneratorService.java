@@ -1,4 +1,4 @@
-package com.syeedode.security.keys.syeedsimplementation.generation;
+package com.syeedode.security.keys.generation;
 
 import com.syeedode.security.proivders.SyeedsProvider;
 
@@ -14,7 +14,6 @@ import java.util.Arrays;
  */
 public class SyeedsKeyGeneratorService {
     public static void keyGeneroatorExecutor() {
-        Security.addProvider(new SyeedsProvider());
         try {
             KeyPairGenerator kpg = KeyPairGenerator.getInstance("SYEED_ODE");
             kpg.initialize(0, new SecureRandom());

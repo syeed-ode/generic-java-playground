@@ -1,6 +1,7 @@
 package com.syeedode.exceptions;
 
-import com.syeedode.security.keys.syeedsimplementation.keystore.KeyStoreExceptionDto;
+
+import com.syeedode.security.keys.keystore.KeyStoreExceptionDto;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+
 
 /**
  * O'Reilly Java Security Second Edition
@@ -31,12 +33,13 @@ public class ApplicationExceptionService {
         throw new KeyStoreHandlerException(message, e);
     }
 
-    public void manageKeyStoreHandlerException(Exception e, KeyStoreExceptionDto dto){
+
+    public void manageKeyStoreHandlerException(Exception e, KeyStoreExceptionDto exceptionDto) {
         String message;
         if (e instanceof KeyStoreException) {
-            message = "Could not identiry correct algorithm: " + dto.getAlgorithm();
+            message = "Could not identiry correct algorithm: " + exceptionDto.getAlgorithm();
         } else if (e instanceof FileNotFoundException) {
-            message = "Could not read .keystore file from: " + dto.getFileName();
+            message = "Could not read .keystore file from: " + exceptionDto.getFileName();
         } else if (e instanceof IOException) {
             message = "Error in reading the data from the .keystore file: ";
         } else if (e instanceof NoSuchAlgorithmException) {

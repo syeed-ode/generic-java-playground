@@ -1,12 +1,10 @@
 package com.syeedode.security.main;
 
-import static com.syeedode.security.keys.AssymetricGenericKeyService.assemtricKeyGenorator;
-import static com.syeedode.security.keys.AssymetricGenericKeyService.printKeyValue;
-import static com.syeedode.security.keys.syeedsimplementation.generation.SyeedsKeyGeneratorService.keyGeneroatorExecutor;
-import static com.syeedode.security.keys.syeedsimplementation.keystore.KeyStoreService.keyStoreEntry;
-import static com.syeedode.security.proivders.ProviderListService.printListOfProviders;
-import static com.syeedode.security.ssl.SSLServer.runSSLServer;
-import static com.syeedode.security.ssl.SSLServerWithContext.executeSSLServerWithContext;
+import com.syeedode.security.proivders.SyeedsProvider;
+
+import java.security.Security;
+
+import static com.syeedode.security.keys.keymanager.SSLWithKeyManagerService.executeSSLServerWithKeyManager;
 
 /**
  * O'Reilly Java Security Second Edition
@@ -17,12 +15,14 @@ import static com.syeedode.security.ssl.SSLServerWithContext.executeSSLServerWit
  */
 public class SecurityExecutionMain {
     public static void main(String args []) {
-        keyStoreEntry(args);
-        runSSLServer();
-        executeSSLServerWithContext(args);
-        keyGeneroatorExecutor();
-        assemtricKeyGenorator();
-        printListOfProviders();
-        printKeyValue();
+        Security.addProvider(new SyeedsProvider());
+        executeSSLServerWithKeyManager(args);
+//        keyStoreEntry(args);
+//        runSSLServer();
+//        executeSSLServerWithContext(args);
+//        keyGeneroatorExecutor();
+//        assemtricKeyGenorator();
+//        printListOfProviders();
+//        printKeyValue();
     }
 }
