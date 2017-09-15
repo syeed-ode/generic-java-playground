@@ -4,7 +4,8 @@ import com.syeedode.security.proivders.SyeedsProvider;
 
 import java.security.Security;
 
-import static com.syeedode.security.keys.keymanager.SSLWithKeyManagerService.executeSSLServerWithKeyManager;
+import static com.syeedode.security.keys.keystore.KeyStoreService.keyStoreEntry;
+import static com.syeedode.security.ssl.SSLServer.runSSLServer;
 
 /**
  * O'Reilly Java Security Second Edition
@@ -16,9 +17,9 @@ import static com.syeedode.security.keys.keymanager.SSLWithKeyManagerService.exe
 public class SecurityExecutionMain {
     public static void main(String args []) {
         Security.addProvider(new SyeedsProvider());
-        executeSSLServerWithKeyManager(args);
-//        keyStoreEntry(args);
-//        runSSLServer();
+//        executeSSLServerWithKeyManager(args);
+        keyStoreEntry(args);
+        runSSLServer();
 //        executeSSLServerWithContext(args);
 //        keyGeneroatorExecutor();
 //        assemtricKeyGenorator();
