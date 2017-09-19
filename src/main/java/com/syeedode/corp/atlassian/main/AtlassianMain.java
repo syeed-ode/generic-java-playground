@@ -19,7 +19,7 @@ public class AtlassianMain {
             System.out.println(convert(_in));
         }
 
-    public static void mainLookAndSay(String [] args) throws IOException {
+    public static void main(String [] args) throws IOException {
         Scanner in = new Scanner(System.in);
         String fileName = System.getenv("OUTPUT_PATH");
         fileName = "/Users/syeedode/java_projects/auth/src/main/resources/linkedList";
@@ -51,7 +51,7 @@ public class AtlassianMain {
      *
      *
      ********/
-    public static void main(String [] args) throws IOException {
+    public static void mainLookAndSay(String [] args) throws IOException {
         Scanner in = new Scanner(System.in);
         String fileName = System.getenv("OUTPUT_PATH");
         fileName = "/Users/syeedode/java_projects/auth/src/main/resources/linkedList";

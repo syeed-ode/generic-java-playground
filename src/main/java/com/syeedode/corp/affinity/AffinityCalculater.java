@@ -81,7 +81,7 @@ public class AffinityCalculater {
         for(int i = 0; i < evaluationSite.size(); i++) {
             siteEvaluationList.add(Arrays.asList(evaluationSite.get(i)));
             List<String> siteBuilder = new ArrayList<>();
-            for(int j = evaluationSite.size() -1; j >= 0; j--){
+            for(int j = evaluationSite.size() - 1; j >= 0; j--){
                 if(i!=j){
                     siteBuilder.add(evaluationSite.get(j));
                 }

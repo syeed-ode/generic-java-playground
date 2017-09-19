@@ -31,7 +31,7 @@ public class SSLKeyManager implements X509KeyManager {
     private final String issuer;
 
 
-    /** Contstructor */
+    /** Constructor */
     SSLKeyManager(KeyStore ks, String aliasOfKeyBeingMangaged, char [] pw) {
         keyStore = ks;
         alias = aliasOfKeyBeingMangaged;

@@ -21,11 +21,12 @@ import static com.syeedode.security.common.ArgumentValidator.SERVER_OUTPUT_STRIN
 public class SSLServer extends Thread {
     private final Socket socket;
 
-    /** * Static factory metnods */
+    /** * Static factory methods */
     public static SSLServer getInstance(Socket s) {
         return new SSLServer(s);
     }
 
+    /** Constructor */
     private SSLServer(Socket sock) {
         socket = sock;
     }

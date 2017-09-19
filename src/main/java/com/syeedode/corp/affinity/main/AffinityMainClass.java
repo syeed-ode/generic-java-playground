@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class AffinityMainClass {
 
-	private static final String FILENAME = "/Users/syeedode/java_projects/auth/src/convertToAtlassian/resources/affinityFile";
+	private static final String FILENAME = "/Users/syeedode/java_projects/data-structures/src/main/resources/affinityFile";
 
 	public static void main(String[] args) {
 		AffinityFileReader affinityReader = new AffinityFileReader();
