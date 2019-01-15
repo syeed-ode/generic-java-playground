@@ -2,7 +2,7 @@ package com.syeedode.corp.affinity;
 
 import java.util.*;
 
-public class AffinityCalculater {
+public class AffinityCalculator {
 
     // private AffMapPrinter printer = new AffMapPrinter();
 
