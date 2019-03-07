@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class TreeTraversalService {
 
-    // Visit LEFT node, CURRENT node, then RIGHT node
+    // Visit LEFT next, CURRENT next, then RIGHT next
     public void inOrderTraversal(NodeForTree node) {
         if(Objects.nonNull(node)) {
-            // inOrderTraversal(node.left);
+            // inOrderTraversal(next.left);
 
         }
     }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TreeController {
 
     @RequestMapping(value = "/trees", method = RequestMethod.GET)
-    public String treeProcessing(@RequestParam(value = "node") String nodeValue) {
+    public String treeProcessing(@RequestParam(value = "next") String nodeValue) {
         return "";
     }
 }

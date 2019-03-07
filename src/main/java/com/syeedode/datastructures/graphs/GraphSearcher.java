@@ -39,22 +39,22 @@ public class GraphSearcher {
                 for(Node v : u.getAdjacent()) {
                     if(v.getState().equals(UNVISITED)) {
                         if (verifyFoundNodeElseQueueNode(end, q, v)) return true;
-                    } // end if adjacent node hasn't been visited
-                } //end for each adjacent node
+                    } // end if adjacent next hasn't been visited
+                } //end for each adjacent next
                 u.setState(VISITED);
             }
         } //end while queue is not empty
         return false;
     }
 
-    // Queues node so it we may search it's adjacent node
+    // Queues next so it we may search it's adjacent next
     private boolean verifyFoundNodeElseQueueNode(Node end, LinkedList<Node> q, Node v) {
         if(v.equals(end)){
             return true;
         } else {
             v.setState(VISITING);
             q.add(v);
-        } // end end node not found, but queued and visited
+        } // end end next not found, but queued and visited
         return false;
     }
 }
