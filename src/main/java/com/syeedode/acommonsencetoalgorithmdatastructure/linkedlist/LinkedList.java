@@ -5,7 +5,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import java.util.List;
 import java.util.Objects;
 
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>> {
     public Node<T> firstNode;
     private int linkedNodeSize;
 
