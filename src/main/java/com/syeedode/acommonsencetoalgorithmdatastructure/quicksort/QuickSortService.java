@@ -3,7 +3,7 @@ package com.syeedode.acommonsencetoalgorithmdatastructure.quicksort;
 import static com.syeedode.acommonsencetoalgorithmdatastructure.partitioning.Partitionor.partition;
 
 public class QuickSortService {
-    public static void quickSort(Integer [] array, int leftIndex, int rightIndex) {
+    public void quickSort(Integer [] array, int leftIndex, int rightIndex) {
 
         if(rightIndex - leftIndex <= 0) {
             return;
