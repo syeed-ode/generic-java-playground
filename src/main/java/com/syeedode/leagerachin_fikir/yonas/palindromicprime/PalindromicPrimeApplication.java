@@ -23,8 +23,6 @@ public class PalindromicPrimeApplication {
                 // We use a list because the size is dynamic. In arrays, the size
                 // is fixed.
                 palindromicPrimeList.add(i);
-                System.out.println("Added " + i + " to the list. There are now "
-                        + palindromicPrimeList.size() + " items in the list.");
             }
         }
 
